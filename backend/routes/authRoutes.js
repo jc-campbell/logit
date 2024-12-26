@@ -155,39 +155,4 @@ router.post(
   }
 );
 
-// Protected Route
-/**
- * @swagger
- * /protected:
- *   get:
- *     summary: Access a protected route
- *     tags: [Auth]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Successful access
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                 user:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                     username:
- *                       type: string
- *       401:
- *         description: Access Denied
- *       400:
- *         description: Invalid Token
- */
-router.get('/protected', authenticateToken, (req, res) => {
-  res.status(200).json({ message: 'This is a protected route', user: req.user });
-});
-
 export default router;
