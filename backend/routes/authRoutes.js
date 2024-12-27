@@ -131,6 +131,7 @@ router.post(
     }
 
     const { email, password } = req.body;
+    console.log(`Attempting to Log In: ${email}`);
     try {
       // Retrieve user from database
       const user = await getUserByEmail(email);
@@ -146,7 +147,7 @@ router.post(
 
       // Generate JWT
       const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
-
+      console.log(`Logging In: ${email}`);
       res.status(200).json({ token });
     } catch (error) {
       console.error(error);
