@@ -6,7 +6,7 @@ import { store } from './store';
 
 
 // Main App Component that uses Redux
-import { MainApp } from './components/MainApp';
+import { MainAppWrapper } from './components/MainAppWrapper';
 import { Register, Login } from './components/Auth';
 
 // App wrapper component that provides Redux store
@@ -15,7 +15,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/" element={<MainApp />} />
+          <Route path="/" element={<MainAppWrapper />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

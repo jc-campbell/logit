@@ -146,8 +146,8 @@ router.post(
       }
 
       // Generate JWT
-      const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
-      console.log(`Logging In: ${email}`);
+      const token = jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+      console.log(`Logging In: ${email} \n ${JSON.stringify(user)}`);
       res.status(200).json({ token });
     } catch (error) {
       console.error(error);

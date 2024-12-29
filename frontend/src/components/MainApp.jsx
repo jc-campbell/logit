@@ -15,7 +15,7 @@ import {
   fetchTrendsFailure
 } from '../slices/trendsSlice';
 
-export const MainApp = () => {
+const MainApp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -28,7 +28,7 @@ export const MainApp = () => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        dispatch(loginSuccess({ id: decoded.id }));
+        dispatch(loginSuccess({ username: decoded.username }));
       } catch (error) {
         localStorage.removeItem('token');
       }
@@ -80,7 +80,15 @@ export const MainApp = () => {
   );
 
   return (
-    <div className="container-md">
+    <div className="container-fluid bg-secondary">
+      <div className="container-sm">
+        Main Content
+      </div>
+    </div>
+  )
+
+  return (
+    <div className="container-fluid">
       <div className="row min-vh-100">
         {/* Sidebar Column */}
         <div className="col-3 border-end p-3 d-flex flex-column">
@@ -163,6 +171,7 @@ export const MainApp = () => {
               </div>
             ) : (
               <div className="d-flex flex-column gap-3">
+                <p>{JSON.stringify(currentUser)}</p>
                 {posts.map(post => (
                   <div key={post.id} className="card">
                     <div className="card-body">
@@ -245,3 +254,5 @@ export const MainApp = () => {
     </div>
   );
 };
+
+export default MainApp;

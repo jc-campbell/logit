@@ -1,0 +1,10 @@
+main#app-wrapper {
+  --drawer-width: 271px;
+  --app-bar-height: 64px;
+
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100dvh;
+  width: 100%;
+}

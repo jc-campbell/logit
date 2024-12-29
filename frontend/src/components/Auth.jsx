@@ -93,7 +93,8 @@ export const Login = () => {
       if (data.token) {
         localStorage.setItem('token', data.token);
         const decoded = jwtDecode(data.token);
-        dispatch(loginSuccess({ id: decoded.id }));
+        console.log(decoded, { username: decoded.username });
+        dispatch(loginSuccess({ username: decoded.username }));
         navigate('/');
       }
     } catch (error) {
