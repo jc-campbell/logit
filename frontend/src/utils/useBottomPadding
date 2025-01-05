@@ -1,0 +1,22 @@
+import { useState, useEffect } from "react";
+
+export function useBottomPadding() {
+  const [bottomPadding, setBottomPadding] = useState(0);
+
+  useEffect(() => {
+    const updatePadding = () => {
+      if (window.visualViewport) {
+        const extraPadding = window.innerHeight - window.visualViewport.height;
+        setBottomPadding(extraPadding > 0 ? extraPadding : 0);
+      }
+    };
+
+    window.visualViewport?.addEventListener("resize", updatePadding);
+    updatePadding();
+
+    return () =>
+      window.visualViewport?.removeEventListener("resize", updatePadding);
+  }, []);
+
+  return bottomPadding;
+}
